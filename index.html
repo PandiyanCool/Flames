@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Flames Calculator</title>
+
+    <!-- Bootstrap -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <h3 style="text-align:center;">Flames Calculator</h3>
+    <div class="container">
+        <div class="row">
+
+            <div class="form-group">
+                <label for="YourName">Your name:</label>
+                <input type="text" class="form-control" id="YourName" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <label for="PatnerName">Patner Name:</label>
+                <input type="text" class="form-control" id="PatnerName" placeholder="Patner Name" required>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick=calculate()>Calculate</button>
+
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="node_modules/jquery/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        function calculate(){
+	var YourName=$('#YourName').val().toLowerCase();
+	var PatnerName=$('#PatnerName').val().toLowerCase();
+    console.log('Your Name:'+YourName);
+    console.log('Patner Name: ' +PatnerName);
+    console.log('Length: '+PatnerName.length);
+    			console.log('index char: '+PatnerName[0]);
+                
+	for (var i = 0; i < PatnerName.length; i++) {
+		if(YourName.indexOf(PatnerName[i])!=-1){
+			console.log('character to remove: '+PatnerName[i]);
+            console.log("current name: "+YourName+ '  '+PatnerName);
+            var removeName=PatnerName[i];
+			YourName=YourName.replace(removeName,'');
+            console.log('After replace your name:'+YourName);
+			PatnerName=PatnerName.replace(removeName,'');
+            i--;
+		}
+	}
+    console.log('Final: '+YourName+ "  "+PatnerName);
+    console.log(YourName.length+PatnerName.length);
+    var finalValue=YourName.length+PatnerName.length;
+    var flames=['Friends','Lovers','Affection','Marriage','Enemies','Sister'];
+    alert(flames[(finalValue%6)]);
+}
+    </script>
+</body>
+
+</html>
